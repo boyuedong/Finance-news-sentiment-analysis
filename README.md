@@ -1,13 +1,33 @@
 # Personal-Projects
-Personal Projects (AI/ML, Full stack, etc.), loading to updated further...
-ReadMe: for sentiment analysis: 
-This project is designed to perform sentiment analysis on financial market discussions by leveraging open-source models and APIs. It collects relevant financial data, performs sentiment analysis, and compares the results with market performance (e.g., SPY ETF price changes).
-Uses the following libraries: 
-Scrapy for web scraping
-yfinance for financial data (SPY ETF)
-openai for GPT-3 sentiment classification
-huggingface_hub for accessing Hugging Face models
-langchain for building pipelines with Hugging Face models
-requests for making API calls
-Uses CSV files instead of MongoDB 
+
+Financial Sentiment Analysis:
+
+This project performs sentiment analysis on financial market discussions and compares the results with market performance (e.g., SPY ETF price changes).
+
+1. Collect financial news and comments using Scrapy.
+2. Use GPT-3 (via OpenAI API) to classify sentiment (positive or negative).
+3. Fine-tune sentiment analysis using Hugging Face and LangChain.
+4. RAG: Enhance sentiment analysis with professional analysts' opinions.
+5. Daily Market Sentiment: Generate daily market sentiment and compare with SPY price changes.
+Uses the following:
+Libraries: `Scrapy`, `yfinance`, `openai`, `huggingface_hub`, `langchain`, `requests`
+Usage
+
+1. Scrapy Web Scraping:
+   Run the Scrapy spider:
+   ```bash
+   scrapy runspider finance_spider.py
+   ```
+
+2. Sentiment Classification: Use GPT-3 to classify sentiment in collected text.
+
+3. Train Sentiment Model: Fine-tune the sentiment analysis model using Hugging Face.
+
+4. Compare with SPY: Fetch SPY data using `yfinance` and compare sentiment with price change.
+
+License
+
+MIT License
+
+
 
