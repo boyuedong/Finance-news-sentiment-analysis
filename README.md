@@ -26,8 +26,7 @@ Maps the sentiment to three values:
 Supports multiple industry categories by associating each ticker with its respective industry (e.g., Technology, Healthcare, Energy).
 
 Requirements
-	•	Python 3.x
-	•	Google Colab (or local Jupyter environment)
+	•	Google Colab 
 	•	Libraries:
 	•	requests
 	•	beautifulsoup4
@@ -48,50 +47,21 @@ cd finance-sentiment-analysis
 If running locally, create a virtual environment and install dependencies using pip:
 
 pip install requests beautifulsoup4 nltk transformers torch pandas
+run the cell with the pip install commands.
 
-If using Google Colab, simply run the cell with the pip install commands.
-
-	3.	Download NLTK Lexicon (Optional):
-The code optionally downloads the VADER lexicon. This is not required for the transformer-based AI sentiment analysis but can be used for comparisons.
-
-import nltk
-nltk.download('vader_lexicon')
 
 
 
 Usage
 	1.	Run the Notebook:
-Open the provided notebook in Google Colab (or Jupyter Notebook) and run all cells sequentially. The notebook contains code that:
 	•	Scrapes Yahoo Finance for a predefined list of tickers.
 	•	Analyzes each headline using the transformer model.
 	•	Displays the results in a pandas DataFrame.
-	2.	Modify the Ticker List:
-You can update the tickers_info dictionary to include additional tickers and assign them to appropriate industry categories.
-	3.	Adjust Sentiment Threshold:
-The threshold for mapping the difference between positive and negative sentiment scores can be adjusted in the compute_sentiment function to optimize performance for your data.
+	2.	Modify the Ticker List: update the tickers_info dictionary to include additional tickers and assign them to appropriate industry categories.
+	3.	Adjust Sentiment Threshold: The threshold for mapping the difference between positive and negative sentiment scores can be adjusted in the compute_sentiment function to optimize performance for your data.
 
-Code Structure
-	•	Scraping Function:
-scrape_yahoo_finance_news(ticker)
-Scrapes Yahoo Finance pages for a given ticker and extracts news headlines.
-	•	Sentiment Analysis Function:
-analyze_headlines_with_ai(ticker, industry)
-Processes each headline using the transformer pipeline and computes a discrete sentiment value.
-	•	Main Loop:
-Iterates over all tickers in the tickers_info dictionary, collects sentiment analysis results, and aggregates them into a DataFrame.
-
-Contributing
-
-Feel free to fork this repository and submit pull requests for improvements or bug fixes. If you have ideas to enhance the scraping mechanism, sentiment analysis precision, or overall pipeline, your contributions are welcome!
-
-Disclaimer
-	•	Data Usage:
-Ensure you comply with Yahoo Finance’s terms of service when scraping data.
-	•	Sentiment Accuracy:
-The transformer model used provides a state-of-the-art approach to sentiment analysis, but no model is perfect. Results should be interpreted as indicative rather than definitive.
 
 License
 
 This project is licensed under the MIT License.
 
-This README provides a comprehensive overview of the project, instructions on setup, and guidelines for usage. Adjust sections as needed for your specific project requirements.
