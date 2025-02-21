@@ -1,67 +1,43 @@
-Finance Sentiment Analysis (updated nonbinary version)
+Automated Finance News Sentiment Analysis with FinBERT (updated nonbinary version)
 
-This project demonstrates a finance sentiment analysis pipeline that scrapes Yahoo Finance news headlines, then uses a transformer-based AI model for sentiment analysis. The pipeline assigns discrete sentiment values: 1 for positive, 0 for neutral, and -1 for negative. The goal is to provide a data-driven tool for analyzing financial news sentiment across different industries.
+This project automates the collection and sentiment analysis of financial news headlines from Yahoo Finance using AI. The script runs daily at a scheduled time, scrapes the latest headlines, and classifies them into Positive, Neutral, or Negative sentiment using FinBERT, a financial sentiment analysis model. The results are saved into a CSV file, enabling users to track sentiment trends over time.
 
-Overview
-
-This project performs the following steps:
-	1.	Data Scraping:
-Scrapes Yahoo Finance for news headlines of selected tickers across various industries using BeautifulSoup.
-	2.	AI Sentiment Analysis:
-Uses a Hugging Face transformer model (cardiffnlp/twitter-roberta-base-sentiment) to compute sentiment probabilities for each headline. Instead of relying solely on the top label, it calculates the difference between positive and negative probabilities and assigns a discrete sentiment based on a configurable threshold.
-	3.	Aggregation and Display:
-Aggregates the results into a pandas DataFrame, which includes ticker, industry, timestamp, headline, dominant sentiment label, and the computed sentiment value.
-
-Features
-	•	Scraping Yahoo Finance:
-Custom scraping of Yahoo Finance pages to extract headlines for a list of predefined tickers.
-	•	Transformer-Based Sentiment Analysis:
-Uses a transformer model to capture nuanced sentiment beyond basic lexicon methods. The model returns all sentiment scores to allow for threshold-based decision making.
-	•	Discrete Sentiment Mapping:
-Maps the sentiment to three values:
-	•	1: Positive
-	•	0: Neutral
-	•	-1: Negative
-	•	Multi-Industry Support:
-Supports multiple industry categories by associating each ticker with its respective industry (e.g., Technology, Healthcare, Energy).
-
-Requirements
-	•	Google Colab 
-	•	Libraries:
-	•	requests
-	•	beautifulsoup4
-	•	pandas
-	•	datetime
-	•	nltk
-	•	transformers
-	•	torch
+How It Works
+	1.	Scrapes financial news from Yahoo Finance.
+	2.	Processes headlines using FinBERT to determine sentiment.
+	3.	Saves the data into a CSV file (daily_finance_news_sentiment.csv).
+	4.	Runs automatically every day at 8:00 AM 
 
 Installation & Setup
-	1.	Clone the Repository:
 
-git clone https://github.com/yourusername/finance-sentiment-analysis.git
-cd finance-sentiment-analysis
+Step 1: Install Dependencies
+
+Run the following command to install required Python libraries:
+
+pip install schedule transformers pandas requests beautifulsoup4
+
+Step 2: Run the Script
+
+Execute the script in a Python environment (Jupyter Notebook, Google Colab, or Terminal):
+
+python finance_news_sentiment.py
+
+The script will run continuously, fetching and analyzing news daily.
 
 
-	2.	Install Required Libraries:
-If running locally, create a virtual environment and install dependencies using pip:
+Data Output
 
-pip install requests beautifulsoup4 nltk transformers torch pandas
-run the cell with the pip install commands.
+The script generates a CSV file (daily_finance_news_sentiment.csv) with the following columns:
 
-
-
-
-Usage
-	1.	Run the Notebook:
-	•	Scrapes Yahoo Finance for a predefined list of tickers.
-	•	Analyzes each headline using the transformer model.
-	•	Displays the results in a pandas DataFrame.
-	2.	Modify the Ticker List: update the tickers_info dictionary to include additional tickers and assign them to appropriate industry categories.
-	3.	Adjust Sentiment Threshold: The threshold for mapping the difference between positive and negative sentiment scores can be adjusted in the compute_sentiment function to optimize performance for your data.
+Timestamp	Title	Sentiment
+2024-06-15 08:00:00	Fed hikes interest rates again	Negative
+2024-06-15 08:00:01	Tech stocks rally as AI optimism grows	Positive
+2024-06-15 08:00:02	Oil prices remain stable amid global concerns	Neutral
 
 
 License
 
-This project is licensed under the MIT License.
+This project is open-source and available under the MIT License.
 
+
+Built by Boyue – AI Enthusiast 🚀
